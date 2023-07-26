@@ -8,6 +8,10 @@ headers = {'User-Agent': 'Mozilla/5.0'}
 
 houses_data = []
 
+# Record the start time
+start_time = time.time()  
+
+
 for page in range(1, 125):
     url = url_base + str(page)
     response = requests.get(url, headers=headers)
@@ -31,10 +35,12 @@ with open(csv_file_path, 'w', newline='', encoding='utf-8') as f:
     csv_writer.writeheader()
     csv_writer.writerows(houses_data)
 
- # Record the end time
+
+# Record the end time
 end_time = time.time()
  # Calculate the time taken 
 elapsed_time = end_time - start_time 
+
 
 print("Data saved in houses-for-rent.csv file successfully")
 print(f"Time taken to download the data: {elapsed_time:.2f} seconds")
